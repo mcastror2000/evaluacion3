@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Ejercicio 2</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffa500; /* Color anaranjado */
+            border-radius: 15px; /* Bordes redondeados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+            margin-bottom: 20px; /* Espacio entre el recuadro y el resultado */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input-group {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        #resultado {
+            font-size: 1.2em;
+            color: blue;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="formularioEjercicio2">
+            <div class="input-group">
+                <label for="nombre1">Nombre 1:</label>
+                <input type="text" id="nombre1" name="nombre1" required>
+            </div>
+            <div class="input-group">
+                <label for="nombre2">Nombre 2:</label>
+                <input type="text" id="nombre2" name="nombre2" required>
+            </div>
+            <div class="input-group">
+                <label for="nombre3">Nombre 3:</label>
+                <input type="text" id="nombre3" name="nombre3" required>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <div id="resultado">
+        <!-- Aquí se mostrarán los resultados -->
+    </div>
+
+    <script>
+        document.getElementById('formularioEjercicio2').addEventListener('submit', function(event){
+            event.preventDefault();
+
+            const nombre1 = document.getElementById('nombre1').value;
+            const nombre2 = document.getElementById('nombre2').value;
+            const nombre3 = document.getElementById('nombre3').value;
+
+            let maxNombre = '';
+            let maxLength = 0;
+
+            if (nombre1.length > maxLength) {
+                maxNombre = nombre1;
+                maxLength = nombre1.length;
+            }
+            if (nombre2.length > maxLength) {
+                maxNombre = nombre2;
+                maxLength = nombre2.length;
+            }
+            if (nombre3.length > maxLength) {
+                maxNombre = nombre3;
+                maxLength = nombre3.length;
+            }
+
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.innerHTML = `Nombre con más caracteres: ${maxNombre}<br>Cantidad de caracteres: ${maxLength}`;
+        });
+    </script>
+</body>
+</html>
